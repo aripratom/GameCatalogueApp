@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Game Catalogue</string>
+    <string name="title_favorite">Module Title</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="submission_1">Submission 2.0.0</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="game_rating">Game Rating</string>
+    <string name="release_date">Release Date</string>
+    <string name="games">Games</string>
+    <string name="welcome_in_games_catalogue_nchoose_your_favorite_games_now">Welcome in Games Catalogue!
+        Choose Your Favorite Games Now!</string>
+    <string name="games_not_found">Games Not Found</string>
+    <string name="search">Search</string>
+    <string name="popular_games">Popular Games</string>
+</resources>
