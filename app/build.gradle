@@ -45,6 +45,10 @@ android {
         experimental = true
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
     dynamicFeatures = [':favorite']
 }
 
