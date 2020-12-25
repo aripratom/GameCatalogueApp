@@ -16,15 +16,17 @@ import com.aripratom.core.ui.GameAdapter
 import com.aripratom.core.utils.OnGameClick
 import com.aripratom.gamecatalogue.databinding.FragmentHomeBinding
 import com.aripratom.gamecatalogue.detail.GameDetailActivity
+import com.aripratom.gamecatalogue.di.viewModelModule
 import com.facebook.shimmer.ShimmerFrameLayout
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.context.unloadKoinModules
 
 class HomeFragment : Fragment(), OnGameClick {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding
 
-    private lateinit var adapterGamePopular: GameAdapter
+    //private lateinit var adapterGamePopular: GameAdapter
 
     private val viewModel: HomeViewModel by viewModel()
 
@@ -46,8 +48,9 @@ class HomeFragment : Fragment(), OnGameClick {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            adapterGamePopular = GameAdapter(this)
-            getPopularGames(binding!!.rvPopularGame, adapterGamePopular)
+            val adapterGamePopular = GameAdapter(this)
+            binding?.rvPopularGame?.let { getPopularGames(it, adapterGamePopular) }
+            viewModel.popularGames.observe(viewLifecycleOwner, observeViewModel(adapterGamePopular, binding!!.progressPopular))
         }
     }
 
@@ -70,7 +73,7 @@ class HomeFragment : Fragment(), OnGameClick {
             }
 
     private fun getPopularGames(rv: RecyclerView, gameAdapter: GameAdapter) {
-        viewModel.popularGames.observe(viewLifecycleOwner, observeViewModel(adapterGamePopular, binding!!.progressPopular))
+
         rv.apply {
             layoutManager = GridLayoutManager(context,2)
             setHasFixedSize(true)

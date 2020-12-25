@@ -7,6 +7,6 @@ fun dateFormat(date: String?): String? {
     val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val sdf = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
 
-    return if (date != null) sdf.format(format.parse(date))
+    return if (date != null) sdf.format(format.parse(date)!!)
     else "-"
 }
